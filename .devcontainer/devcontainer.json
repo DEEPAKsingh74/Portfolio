@@ -1,6 +1,7 @@
 {
 	"name": "portfolio",
 	"dockerComposeFile": "docker-compose-dev.yaml",
+	"dockerFile": "Dockerfile",
 	"service": "frontend-service", // Choose the service that will be the primary service for the Codespace.
 	"forwardPorts": [
 		"5001:5000",
