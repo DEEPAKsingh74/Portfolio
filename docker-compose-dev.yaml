@@ -1,0 +1,100 @@
+version : "3.9"
+
+services:
+
+  # 5  -----------------     FLASK API SERVICES     -----------------  
+
+  prediction-service:
+    container_name: prediction-service
+    build:
+      context: ./prediction-service
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - "${PREDICTION_SERVICE_PORT}:${PREDICTION_SERVICE_PORT_INTERNAL}"
+    volumes:
+      - ./prediction-service:/app
+      - ./prediction-service/requirements.txt:/app/requirements.txt
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+
+
+  # 5  -----------------     NGINX SERVICE     -----------------
+
+  nginx-service:
+    container_name: nginx-service
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - "${NGINX_SERVICE_PORT}:${NGINX_SERVICE_PORT_INTERNAL}"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - prediction-service
+      - frontend-service
+      - api-gateway
+      - comment-toxicity-service
+
+  # 5  -----------------     API GATEWAY SERVICE     -----------------
+
+  api-gateway:
+    container_name: api-gateway
+    build:
+      context: ./api/api-gateway
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - "${API_GATEWAY_SERVICE_PORT}:${API_GATEWAY_SERVICE_PORT_INTERNAL}"
+    volumes:
+      - ./api/api-gateway:/app
+      - ./api/api-gateway/src:/app/src
+      - ./api/api-gateway/package.json:/app/package.json
+      - ./api/api-gateway/package-lock.json:/app/package-lock.json
+
+  # 5  -----------------     FRONTEND SERVICE     -----------------
+
+
+  frontend-service:
+    container_name: frontend-service
+    build:
+      context: ./portfolio
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - "${FRONTEND_SERVICE_PORT}:${FRONTEND_SERVICE_PORT_INTERNAL}"
+    volumes:
+      - ./portfolio:/app
+      - ./portfolio/src:/app/src
+      - ./portfolio/package.json:/app/package.json
+      - ./portfolio/package-lock.json:/app/package-lock.json
+
+  
+  # 5  -----------------     COMMENT TOXICITY SERVICE     -----------------
+
+
+  comment-toxicity-service:
+    container_name: comment-toxicity-service
+    build:
+      context: ./api/comment-toxicity
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - "${COMMENT_TOXICITY_SERVICE_PORT}:${COMMENT_TOXICITY_SERVICE_PORT_INTERNAL}"
+    volumes:
+      - ./api/comment-toxicity:/app
+      - ./api/comment-toxicity/src:/app/src
+      - ./api/comment-toxicity/package.json:/app/package.json
+      - ./api/comment-toxicity/package-lock.json:/app/package-lock.json
+      
+    
+
+
+  

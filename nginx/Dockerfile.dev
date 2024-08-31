@@ -1,0 +1,10 @@
+FROM nginx:1.26.1-alpine-slim
+
+# Copy custom NGINX configuration file to container
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 80
+EXPOSE 80
+
+# Command to start NGINX
+CMD ["nginx", "-g", "daemon off;"]

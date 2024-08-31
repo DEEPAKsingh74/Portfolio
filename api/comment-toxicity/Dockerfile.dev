@@ -1,0 +1,18 @@
+# Use an official Node.js runtime as a parent image
+FROM node:14-alpine
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the package.json and package-lock.json
+COPY package*.json ./
+
+# Install any necessary dependencies
+RUN npm install
+
+# Copy the rest of the application code to /app
+COPY . .
+
+
+# Command to start the API Gateway
+CMD ["npm", "run", "dev"]
