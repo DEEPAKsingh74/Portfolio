@@ -2,15 +2,6 @@
 	"name": "portfolio",
 	"dockerComposeFile": "docker-compose-dev.yaml",
 	"service": "frontend-service", // Choose the service that will be the primary service for the Codespace.
-	"workspaceFolder": "/workspace/portfolio", // Adjust this path according to the service you want to work in.
-	"postCreateCommand": "pip install -r requirements.txt", // Adjust if needed for other services or package managers.
-	"runServices": [
-		"prediction-service",
-		"nginx-service",
-		"api-gateway",
-		"frontend-service",
-		"comment-toxicity-service"
-	],
 	"forwardPorts": [
 		"5001:5000",
 		"80:80",
@@ -18,12 +9,5 @@
 		"8002:8000",
 		"3001:3001"
 	],
-	"remoteUser": "vscode", // The user in the container.
-	"mounts": [
-		"source=${localWorkspaceFolder}/prediction-service,target=/workspace/prediction-service,type=bind",
-		"source=${localWorkspaceFolder}/nginx,target=/workspace/nginx,type=bind",
-		"source=${localWorkspaceFolder}/api/api-gateway,target=/workspace/api/api-gateway,type=bind",
-		"source=${localWorkspaceFolder}/portfolio,target=/workspace/portfolio,type=bind",
-		"source=${localWorkspaceFolder}/api/comment-toxicity,target=/workspace/api/comment-toxicity,type=bind"
-	]
+	"remoteUser": "vscode"
 }
