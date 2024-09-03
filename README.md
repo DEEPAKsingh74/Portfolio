@@ -23,9 +23,9 @@ Ensure you have the following installed:
    ```bash
    cd <project-directory>
    
-3. Download the secrets folder from [this link](<environment-file-link>) and place it in the root directory where `docker-compose` is present.
+3. Download the secrets folder from [this link](<[environment-file-link](https://drive.google.com/drive/folders/1ejWsgizK18ZXPujULXC8mUi3Xyatn2eJ?usp=sharing)>) and place it in the root directory where `docker-compose` is present.
 
-5. Download the environment file from [this link](<environment-file-link>) and place it in the root directory where `docker-compose` is present.
+5. Download the environment file from [this link](<[environment-file-link](https://drive.google.com/drive/folders/1ejWsgizK18ZXPujULXC8mUi3Xyatn2eJ?usp=sharing)>) and place it in the root directory where `docker-compose` is present.
 
 
 ### Running the application
