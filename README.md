@@ -67,23 +67,27 @@ You can run the application in either development or production mode.
   - Docker Compose
 
 
-### 📂 Folder Structure
+# Folder Structure
 
-    .
+```plaintext
 .
-├── backend/                  # Backend microservices
-├── frontend/                 # Frontend application
-├── docker-compose-dev.yaml   # Docker Compose configuration for development
-├── docker-compose-prod.yaml  # Docker Compose configuration for production
-├── secrets/                  # Secrets and configuration files
-├── .env                      # Environment variables
-└── README.md                 # This file
+├── backend/               # Backend microservices
+├── frontend/              # Frontend application
+├── docker-compose-dev.yaml  # Docker Compose configuration for development
+├── docker-compose-prod.yaml # Docker Compose configuration for production
+├── secrets/               # Secrets and configuration files
+├── .env                   # Environment variables
+└── README.md              # This file
+
+```
 
 
-###📝 Notes
+### 📝 Notes
 
 - Ensure all environment variables and secrets are correctly set up for both development and production environments.
-
 - For any issues or contributions, please refer to the contributing guidelines or open an issue.
+
+
+
 
    
