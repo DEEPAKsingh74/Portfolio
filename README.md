@@ -70,6 +70,7 @@ You can run the application in either development or production mode.
 ### 📂 Folder Structure
 
     .
+.
 ├── backend/                  # Backend microservices
 ├── frontend/                 # Frontend application
 ├── docker-compose-dev.yaml   # Docker Compose configuration for development
@@ -77,6 +78,7 @@ You can run the application in either development or production mode.
 ├── secrets/                  # Secrets and configuration files
 ├── .env                      # Environment variables
 └── README.md                 # This file
+
 
 ###📝 Notes
 
